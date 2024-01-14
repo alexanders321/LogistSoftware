@@ -1,0 +1,282 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <div class="container">
+        <div class="row my-3">
+            <div class="col">
+                <h4>Bootstrap 4 Chart.js - Line Chart</h4>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <canvas id="chLine" height="100"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+        <script>
+
+            var colors = ['#007bff', '#28a745', '#333333', '#c3e6cb', '#dc3545', '#6c757d'];
+
+            /* large line chart */
+            var chLine = document.getElementById("chLine");
+            var chartData = {
+                labels: ["S", "M", "T", "W", "T", "F", "S"],
+                datasets: [{
+                    data: [589, 445, 483, 503, 689, 692, 634],
+                    backgroundColor: 'transparent',
+                    borderColor: colors[0],
+                    borderWidth: 4,
+                    pointBackgroundColor: colors[0]
+                },
+                {
+                    data: [639, 465, 493, 478, 589, 632, 674],
+                    backgroundColor: colors[3],
+                    borderColor: colors[1],
+                    borderWidth: 4,
+                    pointBackgroundColor: colors[1]
+                }]
+            };
+
+            if (chLine) {
+                new Chart(chLine, {
+                    type: 'line',
+                    data: chartData,
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: false
+                                }
+                            }]
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                });
+            }
+        </script>
+*@
+
+
+
+ 
+@model Dictionary<string, WebApplication1.Controllers.HISTORY.statistica>
+@{ if (Model != null)
+    {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th scope="col">@ViewData["Message"]</th>
+                    <th scope="col"><input type="checkbox" />доставлено</th>
+                    <th scope="col"><input type="checkbox" />наложка</th>
+                    <th scope="col"><input type="checkbox" />недозвон</th>
+                    <th scope="col"><input type="checkbox" />не выдал</th>
+                    <th scope="col"><input type="checkbox" />общее кол-во</th>
+                    <th scope="col"><input type="checkbox" />оплачены</th>
+                    <th scope="col"><input type="checkbox" />организации</th>
+                    <th scope="col"><input type="checkbox" />отказ</th>
+                    <th scope="col"><input type="checkbox" />розница</th>
+                    <th scope="col"><input type="checkbox" />вне зоны</th>
+                    <th scope="col"><input type="checkbox" />кбт</th>
+                    <th scope="col"><input type="checkbox" />мбт</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @{
+                    foreach (KeyValuePair<string, WebApplication1.Controllers.HISTORY.statistica> keyValue in Model)
+                    {
+                        <tr>
+                            @*дата магаз*@
+
+                            <td class="guina"> @keyValue.Key;</td>
+                            <td>@keyValue.Value.dostaw;</td>
+                            <td>@keyValue.Value.nalogka;</td>
+                            <td>@keyValue.Value.nedozwon;</td>
+                            <td>@keyValue.Value.ne_widal;</td>
+                            <td>@keyValue.Value.obshee_count;</td>
+                            <td>@keyValue.Value.oplachen;</td>
+                            <td>@keyValue.Value.org;</td>
+                            <td>@keyValue.Value.otkaz;</td>
+                            <td>@keyValue.Value.roznica;</td>
+                            <td>@keyValue.Value.wne_zoni;</td>
+                            <td>@keyValue.Value.kbt;</td>
+                            <td>@keyValue.Value.mbt;</td>
+
+
+                        </tr>
+
+                    }
+
+
+                }
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">дата</th>
+                    <th scope="col">магазин</th>
+                    <th scope="col">id</th>
+                    <th scope="col"><input type="checkbox" />доставлено</th>
+                    <th scope="col"><input type="checkbox" />наложка</th>
+                    <th scope="col"><input type="checkbox" />недозвон</th>
+                    <th scope="col"><input type="checkbox" />не выдал</th>
+                    <th scope="col"><input type="checkbox" />общее кол-во</th>
+                    <th scope="col"><input type="checkbox" />оплачены</th>
+                    <th scope="col"><input type="checkbox" />организации</th>
+                    <th scope="col"><input type="checkbox" />отказ</th>
+                    <th scope="col"><input type="checkbox" />розница</th>
+                    <th scope="col"><input type="checkbox" />вне зоны</th>
+                    <th scope="col"><input type="checkbox" />кбт</th>
+                    <th scope="col"><input type="checkbox" />мбт</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+                    int x = 0;
+                    string data = null;
+                    string mark = null;
+                    foreach (WebApplication7.Views.wodili.zakaz frr in WebApplication1.Controllers.HISTORY.formated_data)
+                    {
+
+                        //общее за день
+                        if (frr.data_dost != data)
+                        {
+
+
+                            data = frr.data_dost;
+                            mark = null;
+                                <tr class="k">
+                                    <td onclick="show_hide_MA('@frr.data_dost','m' )" class="data" id="@frr.data_dost">@frr.data_dost</td>
+                                    <td></td>
+                                    <td ></td>
+                                    <td class="dostaw_d @frr.data_dost">общее</td>
+                                    <td class="nalogka_d @frr.data_dost">общее</td>
+                                    <td class="nedozwon_d @frr.data_dost">общее</td>
+                                    <td class="ne_widal_d @frr.data_dost">общее</td>
+                                    <td class="obshee_count_d @frr.data_dost">общее</td>
+                                    <td class="oplachen_d @frr.data_dost">общее</td>
+                                    <td class="org_d @frr.data_dost">общее</td>
+
+                                    <td class="otkaz_d @frr.data_dost">общее</td>
+                                    <td class="roznica_d @frr.data_dost">общее</td>
+                                    <td class="wne_zoni_d @frr.data_dost">общее</td>
+                                    <td class="kbt_d @frr.data_dost">общее</td>
+                                    <td class="mbt_d @frr.data_dost">общее</td>
+                                  
+                                   
+                                </tr>
+
+                        }
+                        if (frr.MAGAZIN != mark)
+                        {
+                            //общее за день в магазине
+
+                            mark = frr.MAGAZIN;
+            <tr hidden="hidden"  class="m @frr.data_dost" >
+                <td  hidden="hidden" onclick="show_hide_MA2('@frr.data_dost', 'z','@frr.MAGAZIN')" class="m @frr.data_dost" >@frr.data_dost</td>
+                <td  hidden="hidden" class="m market_master @frr.data_dost">@frr.MAGAZIN</td>
+                <td   ></td>
+                <td  hidden="hidden"  class="m dostaw_m @frr.data_dost @frr.MAGAZIN">общее</td>
+                <td   hidden="hidden" class="m nalogka_m @frr.data_dost @frr.MAGAZIN">общее</td>
+                <td   hidden="hidden" class="m nedozwon_m @frr.data_dost @frr.MAGAZIN">общее</td>
+                <td   hidden="hidden" class="m ne_widal_m @frr.data_dost @frr.MAGAZIN">общее</td>
+                <td   hidden="hidden" class="m obshee_count_m @frr.data_dost @frr.MAGAZIN">общее</td>
+                <td   hidden="hidden" class="m oplachen_m @frr.data_dost @frr.MAGAZIN">общее</td>
+                <td   hidden="hidden" class="m org_m @frr.data_dost @frr.MAGAZIN">общее</td>
+
+                <td  hidden="hidden"  class="m otkaz_m @frr.data_dost @frr.MAGAZIN">общее</td>
+                <td   hidden="hidden" class="m roznica_m @frr.data_dost @frr.MAGAZIN">общее</td>
+                <td   hidden="hidden" class="m wne_zoni_m @frr.data_dost @frr.MAGAZIN">общее</td>
+                <td   hidden="hidden" class="m kbt_m @frr.data_dost @frr.MAGAZIN">общее</td>
+                <td   hidden="hidden" class="m mbt_m @frr.data_dost @frr.MAGAZIN">общее</td>
+            </tr>
+
+                        }
+
+                        WebApplication1.Controllers.HISTORY.statistica keyValue = WebApplication1.Controllers.HISTORY.formated_data2[x];
+                        <tr class="z @frr.MAGAZIN @frr.data_dost"  >
+
+                            <td  hidden="hidden" class="z @frr.MAGAZIN @frr.data_dost"  >@frr.data_dost</td>
+                            <td   hidden="hidden" class="z @frr.MAGAZIN @frr.data_dost" >@frr.MAGAZIN</td>
+                            <td  hidden="hidden" class="z @frr.MAGAZIN @frr.data_dost" >@frr.id_zak</td>
+                            <td  hidden="hidden" class="z @frr.data_dost @frr.MAGAZIN dostaw">@keyValue.dostaw</td>
+                            <td   hidden="hidden"  class="z @frr.data_dost @frr.MAGAZIN nalogka">@keyValue.nalogka</td>
+                            <td  hidden="hidden" class="z @frr.data_dost @frr.MAGAZIN nedozwon">@keyValue.nedozwon</td>
+                            <td  hidden="hidden" class="z @frr.data_dost @frr.MAGAZIN ne_widal">@keyValue.ne_widal</td>
+                            <td  hidden="hidden" class="z @frr.data_dost @frr.MAGAZIN obshee_count">@keyValue.obshee_count</td>
+                            <td   hidden="hidden" class="z @frr.data_dost @frr.MAGAZIN oplachen">@keyValue.oplachen</td>
+                            <td   hidden="hidden" class="z @frr.data_dost @frr.MAGAZIN org">@keyValue.org</td>
+                            <td   hidden="hidden" class="z @frr.data_dost @frr.MAGAZIN otkaz">@keyValue.otkaz</td>
+                            <td   hidden="hidden" class="z @frr.data_dost @frr.MAGAZIN roznica">@keyValue.roznica</td>
+                            <td  hidden="hidden" class="z @frr.data_dost @frr.MAGAZIN wne_zoni">@keyValue.wne_zoni</td>
+                            <td   hidden="hidden" class="z @frr.data_dost @frr.MAGAZIN kbt">@keyValue.kbt</td>
+                            <td   hidden="hidden" class="z @frr.data_dost @frr.MAGAZIN mbt">@keyValue.mbt</td>
+                        </tr>
+
+                        x++;
+                    }
+
+
+
+
+                }
+
+
+
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    }
+
+}
+<script src="~/js/history_tabl.js"></script>

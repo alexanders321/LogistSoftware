@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@{if (WebApplication7.Views.download.dowload_error.Count > 0)
+    {
+        <p id="lol">незагруженны: @WebApplication7.Views.download.dowload_error.Count</p>
+    }
+}
+
+
+<style>
+    #lol {
+        background-color: red
+    }
+</style>
+@{
+
+    foreach (string pr in WebApplication7.Views.download.dowload_error)
+    {
+        <p>@pr</p>
+    }
+
+
+}
+
+
+<p>РЕЕСТРЫ</p>
+<p> загруженны:</p>
+@{String[] fil = WebApplication1.Controllers.FILE.find_file("REESTR\\");
+    for (int x = 0; x < fil.Length; x++)
+    {
+
+        <p>
+            @fil[x];
+        </p>
+
+    }
+
+
+}
+
+<form asp-action="Download" asp-controller="FILE" method="post" enctype="multipart/form-data">
+    <input type="file" name="uploads" multiple="true" /><br>
+    <input type="submit" value="Загрузить" />
+</form>
+
+<a class="navbar-brand" asp-area="" asp-controller="FILE" asp-action="Delete_all">УДАЛИТЬ ВСЕ</a>
+
+

@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <a asp-controller="android" asp-action="Index">RRR</a>
+    <p id="coord">NET</p>
+
+    <style>
+        #map {
+            width: 900px;
+            height: 500px;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=36082468-81e3-4ca1-a405-2b92da257cc9" type="text/javascript"></script>
+
+    <div id="map"></div>
+</div>

@@ -1,0 +1,1 @@
+{"zakazi":[],"name":"\u041A\u0440\u044B\u0433\u0430\u043D\u043E\u0432","id":"1234","wremya_wihoda":"0","wremya_uhoda":null,"shir":"0","dolg":"0","data_last_update_coord":null}

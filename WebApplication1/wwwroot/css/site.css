@@ -1,0 +1,233 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+.wse_zakazi_u_kur2313 {
+    display:block;
+}
+.wse_zakazi_u_kur {
+    display: block;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+.wodili {
+    white-space: nowrap;
+    margin-right: 20px;
+    display: inline-block;
+    background-color: cornflowerblue;
+}
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+
+.knopki_logist {
+    display: table;
+    height: 21px;
+}
+.zakazi2435235 {
+    margin-bottom: 50px;
+    background-color: aqua;
+    padding: 10px
+}
+.pozicii2435235 {
+    background-color:cornflowerblue;
+}
+.magazini2435235 {
+    background-color: purple;
+    padding-top: 0px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    margin-bottom: 80px;
+}
+
+.chekeri432{
+    margin-left:50px;
+    display:inline-block;
+}
+.foto_razmeri {
+    width: 100%;
+}
+.line {
+    display: inline-block;
+    vertical-align: top;
+  margin-right:20px;
+}
+.fileeee {
+ 
+    height: 21px;
+}
+ 
+
+#idddi32332g {
+ 
+}
+
+
+
+.xcalend {
+    position: absolute;
+    z-index: 999;
+    width: 150px;
+    line-height: 1.2em;
+    font-size: 15px;
+    text-align: center;
+    background: #fff;
+    border: 2px solid #ddd
+}
+
+    .xcalend td {
+        cursor: pointer;
+        padding: 6px
+    }
+
+    .xcalend thead td {
+        color: #333
+    }
+
+    .xcalend thead tr:last-child td {
+        font-size: 12px;
+        background: #fff;
+        color: #555;
+        cursor: default
+    }
+
+    .xcalend tbody td {
+        color: #025
+    }
+
+    .xcalend tfoot td {
+        color: #333
+    }
+
+    .xcalend tbody td.tday {
+        background: #eee;
+        font-weight: bold
+    }
+
+    .xcalend tbody td:hover, .xcalend td:hover {
+        background: #025;
+        color: #acf
+    }
+
+    .xcalend tbody td:nth-child(n+6) {
+        color: #e78c5c
+    }
+
+    .xcalend .cal-first td:nth-last-child(-n+2) {
+        color: #e78c5c
+    }
+
+    .xcalend tbody td.today {
+        background: #d00;
+        color: #fff;
+        font-weight: bold
+    }
+
+    .xcalend tbody td.bold {
+        font-weight: bold
+    }
+
+    .xcalend tbody td.cal-l b, .xcalend tbody td.cal-r b {
+        display: none
+    }
+
+    .xcalend tbody td.cal-l:hover b, .xcalend tbody td.cal-r:hover b {
+        display: inline
+    }
+
+    .xcalend a {
+        text-decoration: none
+    }
+
+    .xcalend th a {
+        color: #ccc;
+        display: block;
+        padding: 5px 0
+    }
+.id_spisok_zak{
+    display:block;
+}
+.bloc_out {
+    display: block;
+}
+
+
+.p {
+    text-align: center;
+    font-size: 14px;
+    padding-top: 140px;
+}
+
+.k{
+
+    background-color:azure;
+}
+.m {
+    background-color:aqua;
+}
+.z{
+
+    background-color:aquamarine;
+}

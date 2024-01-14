@@ -1,0 +1,179 @@
+﻿@*
+    //<script src="~/js/woditeli.js"></script>
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<script src="~/js/show_hide.js"></script>
+<script src="~/js/woditeli2.js"></script>
+<script src="~/js/logist_chek.js"></script>
+<script src="~/js/show_ALL.js"></script>
+
+@*
+    <div id="chek_box">
+        <div class="chekeri432">
+            <div>курьеры</div>
+            <input id="kurieri1112" type="radio" checked name="raz" />
+        </div>
+        <div class="chekeri432">
+            <div>магазины</div>
+            <input id="magazini212" type="radio" name="raz" />
+        </div>
+        <div class="chekeri432">
+            <div>заказы</div>
+            <input id="zakazi323" type="radio" name="raz" />
+        </div>
+    </div>
+    <button onclick='hide_ALL()'>магазины  </button>
+    <button onclick='show_ALL()'> заказы </button>
+*@
+<button onclick='kurier.dell_all_doch()'>сбросить заказы у выбранного курьера</button>
+<div class="text-center">
+
+
+    <style>
+        #map {
+            width: 100%;
+            height: 500px;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=36082468-81e3-4ca1-a405-2b92da257cc9" type="text/javascript"></script>
+
+    <div class="uproshayu332" id="map"></div>
+</div>
+@* список магазинов*@
+<div class="uproshayu332">
+    @{
+        foreach (WebApplication7.Views.wodili.magaz pr in WebApplication7.Views.wodili.data_manager.magazini)
+        {
+            bool pok = false;
+            foreach (WebApplication7.Views.wodili.zakaz frr in pr.zakazi)
+            {
+                if (frr.show)
+                    pok = true;
+            }
+            if (pok)
+            {
+                <div>@pr.mag.Replace("Москва", " ")</div>
+                <input onclick="market.show_hide('@pr.mag.Replace("Москва", " ")')" type="checkbox" checked />
+
+
+            }
+        }
+    }
+</div>
+@* список заказов*@
+<div id="magazi">
+
+    <button onclick='manager_packet.send_pak()'>отдать заказ курьерам </button>
+
+    @{
+        foreach (WebApplication7.Views.wodili.magaz pr in WebApplication7.Views.wodili.data_manager.magazini)
+        {
+            bool pok = false;
+            foreach (WebApplication7.Views.wodili.zakaz frr in pr.zakazi)
+            {
+                if (frr.show)
+                    pok = true;
+            }
+            if (pok)
+            {
+                <div class="magazini2435235">
+                    <button hidden="hidden">@pr.mag.Replace("Москва", " ") </button>
+                    <input hidden="hidden" name="text" class="namem uproshayu333" value="@pr.mag.Replace("Москва", " ")">
+                    <input hidden="hidden" name="text" class="adresa" value="@pr.adr">
+                    <input hidden="hidden" name="MAHG" class="MAG_D MAG_D2" value="@pr.dolgota.ToString().Replace(",", ".")">
+                    <input hidden="hidden" name="MAHG" class="MAG_H MAG_H2" value="@pr.shirota.ToString().Replace(",", ".")">
+
+
+                    <input hidden class="mag_data_count_k" value="@pr.kbt">
+                    <input hidden class="mag_data_count_m" value="@pr.mbt">
+
+                    <div class="magaz_inner_dat" id="@pr.mag.Replace("Москва", " ")">
+
+                        <p></p>
+                        @{ foreach (WebApplication7.Views.wodili.zakaz frr in pr.zakazi)
+                            {
+                                if (frr.show)
+                                {
+                                    <div id="@frr.id_zak" hidden="hidden" class="zakazi2435235">
+                                        <p>id  @frr.id_zak</p>
+                                        <p>agent  @frr.agent_type</p>
+                                        <p>oplata @frr.oplata</p>
+                                        <p>numb @frr.number_tell_clienta</p>
+
+
+
+                                        <div class="pozicii2435235 uproshayu332">
+                                            позиции
+                                            @{
+                                                foreach (WebApplication7.Views.wodili.pozicii textz in frr.text_zakaza)
+                                                {
+
+                                                    <p>@textz.text;</p>
+                                                    <p>объём @textz.o;</p>
+                                                    <p>вес @textz.m;</p>
+                                                    <p>количество @textz.count;</p>
+
+                                                }
+                                            }
+                                        </div>
+                                        <input name="text" class="adresa" value="@frr.ADRES_dostawki">
+                                        <input hidden name="ZAK" class="MAG_D @frr.id_zak'D' uproshayu332" value="@frr.dolgota.ToString().Replace(",", ".")">
+                                        <input hidden name="ZAK" class="MAG_H @frr.id_zak'H' uproshayu332" value="@frr.shirota.ToString().Replace(",", ".")">
+
+                                        <div>C</div>
+                                        <div id="@frr.id_zak'tttimesup'">@frr.time_dost_up</div>
+                                        <div>По</div>
+                                        <div id="@frr.id_zak'tttimesdwn'">@frr.time_dost_down</div>
+                                        <input hidden id="@frr.id_zak'status43243'" value="null">
+
+
+
+                                        <p name="text" hidden class="@frr.id_zak'kbt_or_mbtzakaz' uproshayu332">@frr.kbt</p>
+
+
+                                        <button hidden onclick="logist_chek('@frr.id_zak')">заказ проверен</button>
+
+
+
+                                    </div>
+                                }
+                            }
+                        }
+                    </div>
+
+                    <p></p>
+                    <p></p>
+                </div>
+            }
+        }
+    }
+
+</div>
+
+
+<div id="kutieri_upr34234">
+
+
+</div>
+
+<div class="wodili">
+    <div id="block_id" class="line"></div>
+    <div id="block_name" class="line"></div>
+    <div id="block_status" class="line"></div>
+    <div id="block_end_stat" class="line"></div>
+    <div id="block_last_update" class="line"></div>
+    <div id="block_but" class="line"></div>
+    <div id="block_file" class="line"></div>
+
+</div>
+
+
+<div id="woditeli_wsee"></div>
+

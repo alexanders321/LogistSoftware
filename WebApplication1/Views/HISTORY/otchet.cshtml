@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{  
+    int msk_opl = 0;
+    int msk_nalog = 0;
+    int msk_mbt = 0;
+    int msk_kbt = 0;
+    foreach (WebApplication7.Views.wodili.magaz f in WebApplication7.Views.wodili.data_manager.magazini)
+    {
+
+        bool msk = true;
+
+        foreach (string fff in WebApplication7.Views.wodili.data_manager.ALLOBL)
+        {
+            if (f.mag == fff)
+            {
+<p class="iml"> @f.mag  </p>
+<p class="iml">   @f.oplach  @f.nalog @f.mbt  @f.kbt</p>
+                msk = false;
+                break;
+            }
+        }
+
+        if (msk)
+        {
+            msk_opl += f.oplach;
+            msk_nalog += f.nalog;
+            msk_mbt += f.mbt;
+            msk_kbt += f.kbt;
+        }
+    }
+
+<p class="iml">MSK  </p>
+<p class="iml">   @msk_opl  @msk_nalog @msk_mbt  @msk_kbt</p>
+    }

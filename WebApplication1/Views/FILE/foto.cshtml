@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+FOTO
+<p></p>
+@{
+
+
+
+    String[] fil = WebApplication1.Controllers.FILE.find_dir();
+    for (int x = 0; x < fil.Length; x++)
+    {
+        <a asp-action="foto_kurera" asp-controller="FILE" asp-route-path="@fil[x]"> @fil[x]; </a>
+
+    }
+
+}
+
+ 

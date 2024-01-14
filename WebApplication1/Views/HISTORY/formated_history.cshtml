@@ -1,0 +1,131 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    @model List<string>
+    @*
+            <script src="~/js/history/calendar.js"></script><form asp-controller="HISTORY" asp-action="formated_history" method="post">
+            @{ if (Model.Count > 1)
+                        {
+                            <input name="data_s" type="text" value=@Model[0] size="19" onClick="xCal(this, {lang: 'en', order: 1})" onKeyUp="xCal()">
+                            <input name="data_e" type="text" value=@Model[1] size="19" onClick="xCal(this, {lang: 'en', order: 1})" onKeyUp="xCal()">
+
+                        }
+                        else
+                        {
+                            <input name="data_s" type="text" value="2021.10.15"  size="19" onClick="xCal(this, {lang: 'en', order: 1})" onKeyUp="xCal()">
+                            <input name="data_e" type="text" value="2021.10.15" size="19" onClick="xCal(this, {lang: 'en', order: 1})" onKeyUp="xCal()">
+
+
+
+                        }
+                    }
+                    <input type="submit" value="показать по дате">
+                </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <form asp-controller="HISTORY" asp-action="formated_history" method="post">
+            <input name="id" type="text" value="введите заказ" size="19" autocomplete="off">
+            <input type="submit" value="по заказу" autocomplete="off">
+        </form>
+    *@
+
+
+    @*
+
+         <p> доставлено  @WebApplication1.Controllers.HISTORY.stata.dostaw;</p>
+        <p> недозвон  @WebApplication1.Controllers.HISTORY.stata.nedozwon;</p>
+        <p> невыдал тц  @WebApplication1.Controllers.HISTORY.stata.ne_widal</p>
+        <p> вне зоны  @WebApplication1.Controllers.HISTORY.stata.wne_zoni;</p>
+        <p> отказ клиента  @WebApplication1.Controllers.HISTORY.stata.otkaz;</p>
+
+        <p> наложка  @WebApplication1.Controllers.HISTORY.stata.nalogka;</p>
+        <p> оплачен  @WebApplication1.Controllers.HISTORY.stata.oplachen;</p>
+        <p> организация  @WebApplication1.Controllers.HISTORY.stata.org;</p>
+        <p> розница  @WebApplication1.Controllers.HISTORY.stata.roznica;</p>
+
+
+
+
+    *@
+
+
+
+
+
+
+
+
+
+
+
+    foreach (WebApplication7.Views.wodili.zakaz frr in WebApplication1.Controllers.HISTORY.formated_data)
+    {
+        <div id="@frr.id_zak" class="zakazi2435235">
+            <div> МАГАЗИН</div>
+            <div> @frr.MAGAZIN</div>
+            <p>ID  @frr.id_zak</p>
+            <p>  @frr.agent_type</p>
+            <p> @frr.oplata</p>
+            <div class="pozicii2435235">
+                позиции
+                @{
+                    foreach (WebApplication7.Views.wodili.pozicii textz in frr.text_zakaza)
+                    {
+
+                        <p>@textz.text;</p>
+                        <p>объём @textz.o;</p>
+                        <p>вес @textz.m;</p>
+
+                    }
+                }
+            </div>
+            <div>дата доставки @frr.data_dost</div>
+            <div>время доставки c @frr.time_dost_up</div>
+            <div>время доставки до @frr.time_dost_down</div>
+
+            <input name="text" class="adresa" value="@frr.ADRES_dostawki">
+            <input name="ZAK" class="MAG_D @frr.id_zak'D'" value="@frr.dolgota.ToString().Replace(",", ".")">
+            <input name="ZAK" class="MAG_H @frr.id_zak'H'" value="@frr.shirota.ToString().Replace(",", ".")">
+
+
+            <p name="text" class="@frr.id_zak'kbt_or_mbtzakaz'">@frr.kbt</p>
+
+
+            <div id="@frr.id_zak'status_data23442'">
+                @{
+                    foreach (WebApplication7.Views.wodili.status_ stat in frr.status)
+                    {
+                        <div>@stat</div>
+                    }
+                }
+
+            </div>
+            <div id="@frr.id_zak'foto_fata2424'">
+                @{
+                    foreach (string stat in frr.foto)
+                    {
+                        <img class="foto_razmeri" src="/FILE/Foto_pokaz?path=@stat" alt="альтернативный текст">
+
+                    }
+                }
+
+            </div>
+
+        </div>
+
+    }
+}

@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<script src="~/js/driveri_data_base.js"></script>
+
+<form asp-controller="DRIVER_DATA_BASE" asp-action="get_driver" method="post">
+    <input id="ffew323" name="ima" type="text" value="ИМЯ" size="19" onclick="clear_click(ffew323)"  >
+    <input id="ffew32" name="pass" type="text" value="ПАРОЛЬ" onclick="clear_click(ffew32)"  >
+    <input type="submit" value="ДОБАВИТЬ">
+</form>
+
+
+ @{ 
+     foreach(driver_database huyna in driver_manager.worker_base)
+     {
+     <div>
+         имя
+          <a asp-controller="DRIVER_DATA_BASE" asp-action="option_driver_database" asp-route-data="@huyna.name">@huyna.name</a>
+
+
+
+         пароль @huyna.id
+     </div>}
+ }
